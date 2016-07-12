@@ -46,19 +46,12 @@ exports.sync = function(request, result) {
 	  				for (var n = captivity_results.length - 1; n >= 0; n--) {
 	  					
 	  					for (var o = woocommerce_results[i].variations.length - 1; o >= 0; o--) {
-	  						//console.log(woocommerce_results[i].id, woocommerce_results[i].variations[o].sku)
 	  						if (woocommerce_results[i].variations[o].stock_quantity !== captivity_results[n].stock_quantity) 
 	  						{
 		  						if (captivity_results[n].sku === woocommerce_results[i].variations[o].sku) {
-		  							// console.log('woo id: '+ woocommerce_results[i].id, 
-		  							// 			', woo var id: ' + woocommerce_results[i].variations[o].id, 
-		  							// 			', woo var sku: '+ woocommerce_results[i].variations[o].sku, 
-		  							// 			', woo var stock: ' + woocommerce_results[i].variations[o].stock_quantity, 
-		  							// 			', cap stock: ' + captivity_results[n].stock_quantity)
 		  							var variation = {
 		  								'id': woocommerce_results[i].variations[o].id,
-		  								'stock_quantity': +captivity_results[n].stock_quantity
-
+		  								'stock_quantity': 200
 		  							}
 		  							variations.push(variation)
 		  						}
@@ -83,7 +76,7 @@ exports.sync = function(request, result) {
 	  	});
 
 	  	var new_products = {
-	  		'update': products
+	  		'products': products
 	  	}
 
 	    result.json(new_products);
