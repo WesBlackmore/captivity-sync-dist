@@ -48,7 +48,7 @@ exports.sync = function(request, result) {
 		  						if (captivity_results[n].sku === woocommerce_results[i].variations[o].sku) {
 		  							var variation = {
 		  								'id': woocommerce_results[i].variations[o].id,
-		  								'stock_quantity': 200
+		  								'stock_quantity': captivity_results[n].stock_quantity
 		  							}
 		  							variations.push(variation)
 		  						}
