@@ -68,7 +68,7 @@ exports.sync = function(request, result) {
 	  	}
 
 	  	var results = {
-	  		'update': products
+	  		'products': products
 	  	}
 
 	    result.json(results);
