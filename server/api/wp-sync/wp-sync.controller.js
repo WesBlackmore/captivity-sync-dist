@@ -36,6 +36,8 @@ exports.sync = function(request, result) {
 	  response.on('end', function () {
 	  	var woocommerce_results = JSON.parse(str).products;
 
+	  	console.log('woo fetched: ' + woocommerce_results.length)
+
 	  	var products = [];
 	  	var variations = [];
 	  	for (var i = woocommerce_results.length - 1; i >= 0; i--) {
@@ -43,7 +45,9 @@ exports.sync = function(request, result) {
 	  			if (woocommerce_results[i].variations) {
 	  				for (var n = captivity_results.length - 1; n >= 0; n--) {
 	  					for (var o = woocommerce_results[i].variations.length - 1; o >= 0; o--) {
-	  						if (woocommerce_results[i].variations[o].stock_quantity !== captivity_results[n].stock_quantity) 
+	  						var woo_stock_quantity = +woocommerce_results[i].variations[o].stock_quantity;
+	  						var captivity_stock_quantity = +captivity_results[n].stock_quantity;
+	  						if (woo_stock_quantity !== captivity_stock_quantity) 
 	  						{
 		  						if (captivity_results[n].sku === woocommerce_results[i].variations[o].sku) {
 		  							var variation = {
