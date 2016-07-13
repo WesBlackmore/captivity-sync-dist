@@ -10,13 +10,14 @@ exports.index = function(req, res) {
 };
 
 exports.sync = function(request, result) {
-
+	var consumer_key = request.query.consumer_key;
+	var consumer_secret = request.query.consumer_secret;
 	var captivity_results = request.body;
 	captivity_results = captivity_results.root.product;
 
 	var options = {
 		host: 'www.captivity.co.za',
-		path: '/beta/wc-api/v3/products?filter[limit]=-1&consumer_key=ck_555c137f16f72c84ee6c738ed66bf353e1c93179&consumer_secret=cs_1bba571896f06cb39de9138bc56175460d4a62a6',
+		path: '/beta/wc-api/v3/products?filter[limit]=-1&consumer_key=' + consumer_key + '&consumer_secret=' + consumer_secret,
 		headers: {
 			"Content-Type": "application/json"
 		},
@@ -35,8 +36,6 @@ exports.sync = function(request, result) {
 	  //the whole response has been recieved, so we just print it out here
 	  response.on('end', function () {
 	  	var woocommerce_results = JSON.parse(str).products;
-
-	  	console.log('woo fetched: ' + woocommerce_results.length)
 
 	  	var products = [];
 	  	var variations = [];
