@@ -36,15 +36,12 @@ exports.sync = function(request, result) {
 	  response.on('end', function () {
 	  	var woocommerce_results = JSON.parse(str).products;
 
-	  	var results = []
 	  	var products = [];
-	  	var product = {}
 	  	var variations = [];
 	  	for (var i = woocommerce_results.length - 1; i >= 0; i--) {
 	  		if (woocommerce_results[i].variations) {
 	  			if (woocommerce_results[i].variations) {
 	  				for (var n = captivity_results.length - 1; n >= 0; n--) {
-	  					
 	  					for (var o = woocommerce_results[i].variations.length - 1; o >= 0; o--) {
 	  						if (woocommerce_results[i].variations[o].stock_quantity !== captivity_results[n].stock_quantity) 
 	  						{
@@ -65,21 +62,16 @@ exports.sync = function(request, result) {
 					'id': woocommerce_results[i].id,
 					'variations': variations
 				}
-
 				products.push(update)
 				variations = [];
 			}
 	  	}
-	  	
-	  	var dataArray = products.map(function(e){
-	  	  return JSON.stringify(e);
-	  	});
 
-	  	var new_products = {
+	  	var results = {
 	  		'products': products
 	  	}
 
-	    result.json(new_products);
+	    result.json(results);
 	  });
 	}
 
