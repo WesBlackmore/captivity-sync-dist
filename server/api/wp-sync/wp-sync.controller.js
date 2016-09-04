@@ -17,7 +17,7 @@ exports.sync = function(request, result) {
 
 	var options = {
 		host: 'www.captivity.co.za',
-		path: '/beta/wc-api/v3/products?filter[limit]=-1&consumer_key=' + consumer_key + '&consumer_secret=' + consumer_secret,
+		path: '/wc-api/v3/products?filter[limit]=-1&consumer_key=' + consumer_key + '&consumer_secret=' + consumer_secret,
 		headers: {
 			"Content-Type": "application/json"
 		},
@@ -50,8 +50,8 @@ exports.sync = function(request, result) {
 	  						{
 		  						if (captivity_results[n].sku === woocommerce_results[i].variations[o].sku) {
 		  							var variation = {
-		  								'id': woocommerce_results[i].variations[o].id,
-		  								'stock_quantity': captivity_results[n].stock_quantity
+		  								id: woocommerce_results[i].variations[o].id,
+		  								stock_quantity: captivity_results[n].stock_quantity
 		  							}
 		  							variations.push(variation)
 		  						}
@@ -73,7 +73,6 @@ exports.sync = function(request, result) {
 	  	var results = {
 	  		'products': products
 	  	}
-
 	    result.json(results);
 	  });
 	}
