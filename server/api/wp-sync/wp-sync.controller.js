@@ -10,6 +10,7 @@ exports.index = function(req, res) {
 };
 
 exports.sync = function(request, result) {
+	console.log('in')
 	var consumer_key = request.query.consumer_key;
 	var consumer_secret = request.query.consumer_secret;
 	var captivity_results = request.body;
@@ -26,6 +27,7 @@ exports.sync = function(request, result) {
 	};
 
 	var callback = function(response) {
+		console.log('in')
 	  var str = '';
 
 	  //another chunk of data has been recieved, so append it to `str`

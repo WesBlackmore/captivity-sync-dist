@@ -15,6 +15,9 @@ var server = require('http').createServer(app);
 require('./config/express')(app);
 require('./routes')(app);
 
+// app.use(bodyParser.json({limit: '50mb'}));
+// app.use(bodyParser.urlencoded({limit: '50mb'}));
+
 // Start server
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
