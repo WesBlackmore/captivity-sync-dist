@@ -18,7 +18,7 @@ exports.sync = function(request, result) {
 
 	var options = {
 		host: 'www.captivity.co.za',
-		path: '/wc-api/v3/products?filter[limit]=-1&consumer_key=' + consumer_key + '&consumer_secret=' + consumer_secret,
+		path: '/wc-api/v3/products?filter[limit]=10&consumer_key=' + consumer_key + '&consumer_secret=' + consumer_secret,
 		headers: {
 			"Content-Type": "application/json"
 		},
