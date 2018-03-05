@@ -7,10 +7,12 @@
 var errors = require('./components/errors');
 var path = require('path');
 
+var bodyParser = require('../node_modules/body-parser');
+
 module.exports = function(app) {
 
   // Insert routes below
-  app.use('/api/wp-sync', require('./api/wp-sync'));
+  app.use('/api/wp-sync', bodyParser.json({limit: '50mb'}), require('./api/wp-sync'));
   
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

@@ -15,6 +15,15 @@ var server = require('http').createServer(app);
 require('./config/express')(app);
 require('./routes')(app);
 
+var bodyParser = require('../node_modules/body-parser');
+
+app.use(bodyParser.json({limit: '50mb'}) );
+app.use(bodyParser.urlencoded({
+  limit: '50mb',
+  extended: true,
+  parameterLimit:50000
+}));
+
 // app.use(bodyParser.json({limit: '50mb'}));
 // app.use(bodyParser.urlencoded({limit: '50mb'}));
 
